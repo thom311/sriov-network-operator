@@ -12,7 +12,7 @@ if [ -z $SKIP_VAR_SET ]; then
         export SRIOV_INFINIBAND_CNI_IMAGE=${SRIOV_INFINIBAND_CNI_IMAGE:-quay.io/openshift/origin-sriov-infiniband-cni@${INFINIBAND_CNI_IMAGE_DIGEST}}
         # OVS_CNI_IMAGE can be explicitly set to empty value, use default only if the var is not set
         OVS_CNI_IMAGE_DIGEST=$(skopeo inspect docker://quay.io/kubevirt/ovs-cni-plugin | jq --raw-output '.Digest')
-        export OVS_CNI_IMAGE=${OVS_CNI_IMAGE:-quay.io/kubevirt/ovs-cni-plugin@${OVS_CNI_IMAGE_DIGEST}}
+        export OVS_CNI_IMAGE=${OVS_CNI_IMAGE-quay.io/kubevirt/ovs-cni-plugin@${OVS_CNI_IMAGE_DIGEST}}
         # RDMA_CNI_IMAGE can be explicitly set to empty value, use default only if the var is not set
         RDMA_CNI_IMAGE_DIGEST=$(skopeo inspect docker://quay.io/openshift/origin-rdma-cni | jq --raw-output '.Digest')
         export RDMA_CNI_IMAGE=${RDMA_CNI_IMAGE-quay.io/openshift/origin-rdma-cni@${RDMA_CNI_IMAGE_DIGEST}}
