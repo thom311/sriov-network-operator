@@ -29,7 +29,7 @@ if [ -z $SKIP_VAR_SET ]; then
         OPERATOR_IMAGE_DIGEST=$(skopeo inspect docker://quay.io/openshift/origin-sriov-network-operator | jq --raw-output '.Digest')
         export SRIOV_NETWORK_OPERATOR_IMAGE=${SRIOV_NETWORK_OPERATOR_IMAGE:-quay.io/openshift/origin-sriov-network-operator@${OPERATOR_IMAGE_DIGEST}}
         METRICS_EXPORTER_KUBE_RBAC_PROXY_IMAGE_DIGEST=$(skopeo inspect docker://quay.io/openshift/origin-kube-rbac-proxy | jq --raw-output '.Digest')
-        export METRICS_EXPORTER_KUBE_RBAC_PROXY_IMAGE=${METRICS_EXPORTER_KUBE_RBAC_PROXY_IMAGE:-quay.io/openshift/origin-kube-rbac-proxy@${METRICS_EXPORTER_KUBE_RBAC_PROXY_IMAGE_DIGEST}}
+        export METRICS_EXPORTER_KUBE_RBAC_PROXY_IMAGE=${METRICS_EXPORTER_KUBE_RBAC_PROXY_IMAGE-quay.io/openshift/origin-kube-rbac-proxy@${METRICS_EXPORTER_KUBE_RBAC_PROXY_IMAGE_DIGEST}}
         fail_msg_detect="is empty and failed to detect"
 else
         fail_msg_detect="is empty but SKIP_VAR_SET is set"
